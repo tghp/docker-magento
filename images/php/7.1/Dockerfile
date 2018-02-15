@@ -19,7 +19,7 @@ RUN apt-get install git-core curl build-essential openssl libssl-dev \
   && cd node \
   && ./configure \
   && make \
-  && sudo make install
+  && sudo make install \
   && npm install -g grunt-cli
 
 RUN docker-php-ext-configure \
