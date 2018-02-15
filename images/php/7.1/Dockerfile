@@ -14,7 +14,12 @@ RUN apt-get update && apt-get install -y \
   vim \
   zip
   
-RUN apt-get install git-core curl build-essential openssl libssl-dev \
+RUN apt-get install -y \
+  git-core \
+  curl \
+  build-essential \
+  openssl \
+  libssl-dev \
   && git clone https://github.com/nodejs/node.git \
   && cd node \
   && ./configure \
