@@ -13,19 +13,6 @@ RUN apt-get update && apt-get install -y \
   mysql-client \
   vim \
   zip
-  
-RUN apt-get install -y \
-  git-core \
-  curl \
-  build-essential \
-  openssl \
-  libssl-dev \
-  && git clone https://github.com/nodejs/node.git \
-  && cd node \
-  && ./configure \
-  && make \
-  && sudo make install \
-  && npm install -g grunt-cli
 
 RUN docker-php-ext-configure \
   gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
