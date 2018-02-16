@@ -2,7 +2,8 @@ FROM nginx:1.13
 MAINTAINER Mark Shust <mark@shust.com>
 
 RUN apt-get update && apt-get install -y \
-  curl 
+  curl \
+  gnupg
 
 RUN curl -sL https://deb.nodesource.com/setup_9.x | bash - \ 
   && apt-get install -y nodejs
