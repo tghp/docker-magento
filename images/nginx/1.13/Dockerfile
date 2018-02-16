@@ -1,6 +1,17 @@
 FROM nginx:1.13
 MAINTAINER Mark Shust <mark@shust.com>
 
+RUN apt-get update && apt-get install -y \
+  curl 
+
+RUN curl -sL https://deb.nodesource.com/setup_4.x | bash - \ 
+  && apt-get install -y nodejs
+
+RUN npm install -g grunt-cli
+
+COPY bin/run-grunt-all /usr/local/bin/
+COPY bin/run-grunt-theme /usr/local/bin/
+
 RUN groupadd -g 1000 app \
  && useradd -g 1000 -u 1000 -d /var/www -s /bin/bash app
 RUN touch /var/run/nginx.pid
