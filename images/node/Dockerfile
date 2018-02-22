@@ -1,4 +1,4 @@
-FROM FROM php:7.1-fpm
+FROM php:7.1-cli
 MAINTAINER TGHP <glasshouse@tghp.co.uk>
 
 RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - \
