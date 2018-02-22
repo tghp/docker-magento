@@ -8,6 +8,9 @@ RUN apt-get update \
 
 RUN npm install -g grunt-cli
 
+COPY bin/run-grunt-all /usr/local/bin/
+COPY bin/run-grunt-theme /usr/local/bin/
+
 WORKDIR /var/www/html
 
-  
+CMD ["/bin/bash"]
