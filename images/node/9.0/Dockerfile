@@ -1,6 +1,21 @@
 FROM php:7.1-cli
 MAINTAINER TGHP <glasshouse@tghp.co.uk>
 
+RUN docker-php-ext-configure \
+  gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+
+RUN docker-php-ext-install \
+  bcmath \
+  gd \
+  intl \
+  mbstring \
+  mcrypt \
+  opcache \
+  pdo_mysql \
+  soap \
+  xsl \
+  zip
+
 RUN apt-get update \ 
   && apt-get install -y curl gnupg2 build-essential \
   && curl -sL https://deb.nodesource.com/setup_9.x | bash - \
