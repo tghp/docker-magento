@@ -46,6 +46,9 @@ RUN npm install -g grunt-cli
 COPY bin/run-grunt-all /usr/local/bin/
 COPY bin/run-grunt-theme /usr/local/bin/
 
+RUN groupadd --gid 1000 app
+RUN useradd --home /var/www/html --shell /bin/bash --uid 1000 --gid 1000 app
+
 WORKDIR /var/www/html
 
 CMD ["/bin/bash"]
