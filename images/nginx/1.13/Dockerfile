@@ -10,6 +10,10 @@ RUN chown -R app:app /var/cache/nginx/ /var/run/nginx.pid /sock
 COPY ./conf/nginx.conf /etc/nginx/
 COPY ./conf/default.conf /etc/nginx/conf.d/
 
+COPY nginx.sh /nginx.sh
+
+RUN /nginx.sh
+
 USER app:app
 
 VOLUME /var/www
