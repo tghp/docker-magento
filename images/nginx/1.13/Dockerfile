@@ -12,6 +12,7 @@ COPY ./conf/default.conf /etc/nginx/conf.d/
 
 COPY nginx.sh /nginx.sh
 
+RUN chmod +x /nginx.sh
 RUN /nginx.sh
 
 USER app:app
