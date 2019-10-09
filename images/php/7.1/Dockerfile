@@ -4,12 +4,14 @@ MAINTAINER Mark Shust <mark@shust.com>
 RUN apt-get update && apt-get install -y \
   cron \
   git \
+  gzip \
   libfreetype6-dev \
   libicu-dev \
   libjpeg62-turbo-dev \
   libmcrypt-dev \
-  libpng12-dev \
+  libpng-dev \
   libxslt1-dev \
+  lsof \
   mysql-client \
   vim \
   zip
@@ -29,10 +31,22 @@ RUN docker-php-ext-install \
   xsl \
   zip
 
+RUN echo "deb http://deb.debian.org/debian stretch-backports main" >> /etc/apt/sources.list 
+
+RUN apt-get update && apt-get -t stretch-backports install -y \
+  libsodium-dev
+
+RUN pecl install -f libsodium-1.0.17 \
+  && echo "extension=sodium.so" > /usr/local/etc/php/conf.d/sodium.ini
+
 RUN pecl channel-update pecl.php.net \
   && pecl install xdebug \
   && docker-php-ext-enable xdebug \
   && sed -i -e 's/^zend_extension/\;zend_extension/g' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+
+RUN apt-get install -y libssh2-1-dev \
+  && pecl install ssh2-1.1.2 \
+  && docker-php-ext-enable ssh2
 
 RUN curl -sS https://getcomposer.org/installer | \
   php -- --install-dir=/usr/local/bin --filename=composer
