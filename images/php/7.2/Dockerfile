@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
   libpng-dev \
   libxslt1-dev \
   lsof \
-  mysql-client \
+  default-mysql-client \
   vim \
   zip
 
