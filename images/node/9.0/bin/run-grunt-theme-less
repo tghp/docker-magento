@@ -1,0 +1,4 @@
+#!/bin/bash
+[ -z "$1" ] && echo "Please specify a grunt configured theme (ex. luma)" && exit
+/usr/bin/grunt less:$@ && /usr/bin/grunt watch:$@
+
